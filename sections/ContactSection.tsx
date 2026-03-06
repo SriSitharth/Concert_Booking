@@ -10,7 +10,7 @@ export default function ContactSection() {
             
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 mt-16 max-w-4xl mx-auto">
                 <motion.a 
-                    href="tel:+919876543210"
+                    href="tel:+918903301652"
                     className="flex flex-col items-center gap-4 p-8 rounded-2xl border border-slate-800 bg-slate-950/50 hover:border-pink-600 transition-all w-full max-w-xs"
                     initial={{ y: 150, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
@@ -22,12 +22,12 @@ export default function ContactSection() {
                     </div>
                     <div className="text-center">
                         <p className="text-slate-400 text-sm mb-1">Phone</p>
-                        <p className="text-white font-semibold text-lg">+91 98765 43210</p>
+                        <p className="text-white font-semibold text-lg">+91 89033 01652</p>
                     </div>
                 </motion.a>
 
                 <motion.a 
-                    href="mailto:concert@example.com"
+                    href="mailto:support@sugimx.com"
                     className="flex flex-col items-center gap-4 p-8 rounded-2xl border border-slate-800 bg-slate-950/50 hover:border-pink-600 transition-all w-full max-w-xs"
                     initial={{ y: 150, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
@@ -39,12 +39,12 @@ export default function ContactSection() {
                     </div>
                     <div className="text-center">
                         <p className="text-slate-400 text-sm mb-1">Email</p>
-                        <p className="text-white font-semibold text-lg">concert@example.com</p>
+                        <p className="text-white font-semibold text-lg">support@sugimx.com</p>
                     </div>
                 </motion.a>
 
                 <motion.a 
-                    href="https://instagram.com/concert"
+                    href="https://www.instagram.com/tvkcup2026/"
                     target="_blank"
                     rel="noreferrer"
                     className="flex flex-col items-center gap-4 p-8 rounded-2xl border border-slate-800 bg-slate-950/50 hover:border-pink-600 transition-all w-full max-w-xs"
@@ -58,7 +58,7 @@ export default function ContactSection() {
                     </div>
                     <div className="text-center">
                         <p className="text-slate-400 text-sm mb-1">Instagram</p>
-                        <p className="text-white font-semibold text-lg">@concert</p>
+                        <p className="text-white font-semibold text-lg">@tvkcup2026</p>
                     </div>
                 </motion.a>
             </div>

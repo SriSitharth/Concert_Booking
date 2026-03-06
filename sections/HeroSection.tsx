@@ -34,7 +34,7 @@ export default function HeroSection() {
                 transition={{ type: "spring", stiffness: 240, damping: 70, mass: 1 }}
             >
                 Experience the magic of{" "}
-                <span className="move-gradient px-3 rounded-xl">Live Music</span>
+                <span className="move-gradient px-3 rounded-xl">Music</span>
             </motion.h1>
             <motion.p className="text-base text-center text-slate-200 max-w-lg w-full mt-6 px-2"
                 initial={{ y: 50, opacity: 0 }}
