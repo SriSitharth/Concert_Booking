@@ -2,43 +2,43 @@ import { IPricing } from "@/types";
 
 export const pricingData: IPricing[] = [
     {
-        name: "Basic",
-        price: 29,
-        period: "month",
+        name: "General",
+        price: 999,
+        period: "ticket",
         features: [
-            "Access to all basic courses",
-            "Community support",
-            "10 practice projects",
-            "Course completion certificate",
-            "Basic code review"
+            "General admission entry",
+            "Standing area access",
+            "Food court access",
+            "Concert merchandise discount",
+            "Digital concert program"
         ],
         mostPopular: false
     },
     {
-        name: "Pro",
-        price: 79,
-        period: "month",
+        name: "VIP",
+        price: 2999,
+        period: "ticket",
         features: [
-            "Access to all Pro courses",
-            "Priority community support",
-            "30 practice projects",
-            "Course completion certificate",
-            "Advance code review",
-            "1-on-1 mentoring sessions",
-            "Job assistance"
+            "Premium seating",
+            "Exclusive VIP lounge access",
+            "Complimentary refreshments",
+            "Meet & greet opportunity",
+            "Signed merchandise",
+            "Priority parking",
+            "Photo with artists"
         ],
         mostPopular: true
     },
     {
-        name: "Enterprise",
-        price: 199,
-        period: "month",
+        name: "Platinum",
+        price: 4999,
+        period: "ticket",
         features: [
-            "Access to all courses",
-            "Dedicated support",
-            "Unlimited projects",
-            "Course completion certificate",
-            "Premium code review"
+            "Front row seating",
+            "Backstage tour",
+            "Private dining experience",
+            "Exclusive after-party access",
+            "Limited edition collectibles"
         ],
         mostPopular: false
     }

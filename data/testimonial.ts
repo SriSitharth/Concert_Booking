@@ -1,32 +1,32 @@
-import { ITestimonial } from "@/types";
+﻿import { ITestimonial } from "@/types";
 
 export const testimonialsData: ITestimonial[] = [
     {
         image: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200',
-        name: 'Sophia Carter',
-        handle: '@sophiacodes',
-        date: 'February 14, 2025',
-        quote: 'This SaaS app has completely streamlined our onboarding process. What used to take hours now takes minutes!',
+        name: 'Rahul Menon',
+        handle: '@rahulmenon',
+        date: 'March 10, 2025',
+        quote: 'Attended their last concert in Kochi - absolutely mesmerizing! The energy and production quality were world-class.',
     },
     {
         image: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200',
-        name: 'Ethan Walker',
-        handle: '@ethanwrites',
-        date: 'March 3, 2025',
-        quote: 'We’ve tried several tools, but nothing comes close in terms of speed and simplicity. Absolute game-changer.',
+        name: 'Priya Nair',
+        handle: '@priyanair',
+        date: 'February 28, 2025',
+        quote: 'The VIP experience was worth every penny. Meeting the artists backstage was a dream come true!',
     },
     {
         image: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&auto=format&fit=crop&q=60',
-        name: 'Maya Patel',
-        handle: '@mayapatel',
-        date: 'April 22, 2025',
-        quote: 'The automation features alone have saved our team countless hours every week. Worth every penny.',
+        name: 'Arun Kumar',
+        handle: '@arunkumar',
+        date: 'January 15, 2025',
+        quote: 'Best live performance I have ever witnessed. The sound quality and stage setup were phenomenal.',
     },
     {
         image: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&auto=format&fit=crop&q=60',
-        name: 'Liam Brooks',
-        handle: '@liambrooks',
-        date: 'May 18, 2025',
-        quote: 'Setup was ridiculously easy. Within 10 minutes, we were running live and onboarding our first customers.',
+        name: 'Lakshmi Rajan',
+        handle: '@lakshmir',
+        date: 'December 22, 2024',
+        quote: 'Cannot wait for the Thiruvananthapuram show! Already booked my tickets. These concerts are always magical.',
     },
 ];

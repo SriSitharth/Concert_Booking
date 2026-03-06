@@ -2,7 +2,7 @@ import { INavLink } from "@/types";
 
 export const navlinks: INavLink[] = [
     { name: "Home", href: "/" },
-    { name: "Features", href: "#features" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Pricing", href: "#pricing" },
+    { name: "About", href: "#features" },
+    { name: "Tickets", href: "#pricing" },
+    { name: "Pay", href: "#pay" },
 ];

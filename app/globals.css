@@ -4,8 +4,27 @@
     --font-poppins: "Poppins", sans-serif;
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     @apply bg-black text-white text-sm antialiased font-poppins;
+    min-height: 100%;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 body::selection {

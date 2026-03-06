@@ -2,22 +2,22 @@ import { IFooter } from "@/types";
 
 export const footerData: IFooter[] = [
     {
-        title: "Product",
+        title: "Event",
         links: [
             { name: "Home", href: "#" },
-            { name: "Support", href: "#support" },
-            { name: "Pricing", href: "#pricing" },
-            { name: "Affiliate", href: "#affiliate" },
+            { name: "About", href: "#features" },
+            { name: "Tickets", href: "#pricing" },
+            { name: "Contact", href: "#contact" },
         ]
     },
     {
-        title: "Resources",
+        title: "Info",
         links: [
-            { name: "Company", href: "#company" },
-            { name: "Blogs", href: "#blogs" },
-            { name: "Community", href: "#community" },
-            { name: "Careers", href: "#careers" },
-            { name: "About", href: "#about" },
+            { name: "Artists", href: "#artists" },
+            { name: "Venue", href: "#venue" },
+            { name: "Schedule", href: "#schedule" },
+            { name: "FAQ", href: "#faq" },
+            { name: "Pay", href: "#pay" },
         ]
     },
     {

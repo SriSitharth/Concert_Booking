@@ -12,11 +12,12 @@ export default function RootLayout({ children, }: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" style={{ width: '100%', minHeight: '100%' }}>
             <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <link rel="preload" href="/assets/background-splash.svg" as="image" />
             </head>
-            <body>
+            <body style={{ width: '100%', minHeight: '100%' }}>
                 <LenisScroll />
                 {children}
             </body>

@@ -1,59 +1,67 @@
 'use client'
 import SectionTitle from "@/components/SectionTitle";
-import { ArrowRightIcon, MailIcon, UserIcon } from "lucide-react";
+import { InstagramIcon, MailIcon, PhoneIcon } from "lucide-react";
 import { motion } from "motion/react";
 
 export default function ContactSection() {
     return (
-        <div className="px-4 md:px-16 lg:px-24 xl:px-32">
-            <SectionTitle text1="Contact" text2="Reach out to us" text3="Ready to grow your brand? Let’s connect and build something exceptional together." />
-            <form onSubmit={(e) => e.preventDefault()} className='grid sm:grid-cols-2 gap-3 sm:gap-5 max-w-2xl mx-auto text-slate-300 mt-16 w-full' >
-                <motion.div
+        <div className="px-4 md:px-16 lg:px-24 xl:px-32 w-full overflow-hidden">
+            <SectionTitle text1="Contact" text2="Get in touch" text3="Have questions about the concert? Reach out to us through any of these channels." />
+            
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 mt-16 max-w-4xl mx-auto">
+                <motion.a 
+                    href="tel:+919876543210"
+                    className="flex flex-col items-center gap-4 p-8 rounded-2xl border border-slate-800 bg-slate-950/50 hover:border-pink-600 transition-all w-full max-w-xs"
                     initial={{ y: 150, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ type: "spring", stiffness: 320, damping: 70, mass: 1 }}
                 >
-                    <p className='mb-2 font-medium'>Your name</p>
-                    <div className='flex items-center pl-3 rounded-lg border border-slate-700 focus-within:border-pink-500'>
-                        <UserIcon className='size-5' />
-                        <input name='name' type="text" placeholder='Enter your name' className='w-full p-3 outline-none' />
+                    <div className="p-4 rounded-full bg-pink-600/20">
+                        <PhoneIcon className="size-8 text-pink-500" />
                     </div>
-                </motion.div>
-
-                <motion.div
-                    initial={{ y: 150, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ type: "spring", stiffness: 280, damping: 70, mass: 1 }}
-                >
-                    <p className='mb-2 font-medium'>Email id</p>
-                    <div className='flex items-center pl-3 rounded-lg border border-slate-700 focus-within:border-pink-500'>
-                        <MailIcon className='size-5' />
-                        <input name='email' type="email" placeholder='Enter your email' className='w-full p-3 outline-none' />
+                    <div className="text-center">
+                        <p className="text-slate-400 text-sm mb-1">Phone</p>
+                        <p className="text-white font-semibold text-lg">+91 98765 43210</p>
                     </div>
-                </motion.div>
+                </motion.a>
 
-                <motion.div className='sm:col-span-2'
+                <motion.a 
+                    href="mailto:concert@example.com"
+                    className="flex flex-col items-center gap-4 p-8 rounded-2xl border border-slate-800 bg-slate-950/50 hover:border-pink-600 transition-all w-full max-w-xs"
                     initial={{ y: 150, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ type: "spring", stiffness: 240, damping: 70, mass: 1 }}
+                    transition={{ delay: 0.1, type: "spring", stiffness: 320, damping: 70, mass: 1 }}
                 >
-                    <p className='mb-2 font-medium'>Message</p>
-                    <textarea name='message' rows={8} placeholder='Enter your message' className='focus:border-pink-500 resize-none w-full p-3 outline-none rounded-lg border border-slate-700' />
-                </motion.div>
+                    <div className="p-4 rounded-full bg-pink-600/20">
+                        <MailIcon className="size-8 text-pink-500" />
+                    </div>
+                    <div className="text-center">
+                        <p className="text-slate-400 text-sm mb-1">Email</p>
+                        <p className="text-white font-semibold text-lg">concert@example.com</p>
+                    </div>
+                </motion.a>
 
-                <motion.button type='submit' className='w-max flex items-center gap-2 bg-pink-600 hover:bg-pink-700 text-white px-10 py-3 rounded-full'
+                <motion.a 
+                    href="https://instagram.com/concert"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex flex-col items-center gap-4 p-8 rounded-2xl border border-slate-800 bg-slate-950/50 hover:border-pink-600 transition-all w-full max-w-xs"
                     initial={{ y: 150, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ type: "spring", stiffness: 280, damping: 70, mass: 1 }}
+                    transition={{ delay: 0.2, type: "spring", stiffness: 320, damping: 70, mass: 1 }}
                 >
-                    Submit
-                    <ArrowRightIcon className="size-5" />
-                </motion.button>
-            </form>
+                    <div className="p-4 rounded-full bg-pink-600/20">
+                        <InstagramIcon className="size-8 text-pink-500" />
+                    </div>
+                    <div className="text-center">
+                        <p className="text-slate-400 text-sm mb-1">Instagram</p>
+                        <p className="text-white font-semibold text-lg">@concert</p>
+                    </div>
+                </motion.a>
+            </div>
         </div>
     );
 }

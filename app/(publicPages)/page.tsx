@@ -7,13 +7,13 @@ import TestimonialSection from "@/sections/TestimonialSection";
 
 export default function Page() {
     return (
-        <>
+        <div style={{ width: '100%' }}>
             <HeroSection />
             <FeaturesSection />
-            <TestimonialSection />
             <PricingSection />
+            <TestimonialSection />
             <ContactSection />
             <CTASection />
-        </>
+        </div>
     );
 }

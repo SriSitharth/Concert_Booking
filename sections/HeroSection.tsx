@@ -5,56 +5,56 @@ import { motion } from "motion/react";
 
 export default function HeroSection() {
     const specialFeatures = [
-        "No credit card",
-        "30 days free trial",
-        "Setup in 10 minutes",
+        "Live performances",
+        "World-class artists",
+        "Unforgettable night",
     ];
 
     return (
-        <div className="relative flex flex-col items-center justify-center px-4 md:px-16 lg:px-24 xl:px-32">
-            <div className="absolute top-30 -z-10 left-1/4 size-72 bg-pink-600 blur-[300px]"></div>
-            <motion.a href="https://prebuiltui.com?utm_source=pixels" className="group flex items-center gap-2 rounded-full p-1 pr-3 mt-44 text-pink-100 bg-pink-200/15"
+        <div className="relative flex flex-col items-center justify-center px-4 md:px-16 lg:px-24 xl:px-32 w-full overflow-hidden">
+            <div className="absolute top-30 -z-10 left-1/4 w-72 h-72 bg-pink-600 blur-[300px]"></div>
+            <motion.a href="#tickets" className="group flex items-center gap-2 rounded-full p-1 pr-3 mt-24 md:mt-44 text-pink-100 bg-pink-200/15"
                 initial={{ y: -20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2, type: "spring", stiffness: 320, damping: 70, mass: 1 }}
             >
                 <span className="bg-pink-800 text-white text-xs px-3.5 py-1 rounded-full">
-                    NEW
+                    LIVE
                 </span>
                 <p className="flex items-center gap-1">
-                    <span>Try 30 days free trial option </span>
+                    <span>15 April 2026 • Thiruvananthapuram</span>
                     <ChevronRightIcon size={16} className="group-hover:translate-x-0.5 transition duration-300" />
                 </p>
             </motion.a>
-            <motion.h1 className="text-5xl/17 md:text-6xl/21 font-medium max-w-2xl text-center"
+            <motion.h1 className="text-4xl/14 md:text-6xl/21 font-medium max-w-2xl w-full text-center px-2"
                 initial={{ y: 50, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ type: "spring", stiffness: 240, damping: 70, mass: 1 }}
             >
-                Free template to start your{" "}
-                <span className="move-gradient px-3 rounded-xl text-nowrap">Next.js site.</span>
+                Experience the magic of{" "}
+                <span className="move-gradient px-3 rounded-xl">Live Music</span>
             </motion.h1>
-            <motion.p className="text-base text-center text-slate-200 max-w-lg mt-6"
+            <motion.p className="text-base text-center text-slate-200 max-w-lg w-full mt-6 px-2"
                 initial={{ y: 50, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2, type: "spring", stiffness: 320, damping: 70, mass: 1 }}
             >
-                No complexity. No noise. Just clean, reliable automation to boost your team’s efficiency.</motion.p>
-            <motion.div className="flex items-center gap-4 mt-8"
+                Join us for an extraordinary singing concert featuring renowned artists. One night, countless memories - Thiruvananthapuram awaits you.</motion.p>
+            <motion.div className="flex flex-col sm:flex-row items-center gap-4 mt-8"
                 initial={{ y: 50, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ type: "spring", stiffness: 320, damping: 70, mass: 1 }}
             >
-                <button className="bg-pink-600 hover:bg-pink-700 text-white rounded-full px-7 h-11">
-                    Get started
-                </button>
+                <a href="#pricing" className="bg-pink-600 hover:bg-pink-700 text-white rounded-full px-7 h-11 flex items-center justify-center">
+                    Book Tickets
+                </a>
                 <button className="flex items-center gap-2 border border-pink-900 hover:bg-pink-950/50 transition rounded-full px-6 h-11">
                     <VideoIcon strokeWidth={1} />
-                    <span>Watch demo</span>
+                    <span>Watch trailer</span>
                 </button>
             </motion.div>
 
