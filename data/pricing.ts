@@ -3,7 +3,7 @@ import { IPricing } from "@/types";
 export const pricingData: IPricing[] = [
     {
         name: "General",
-        price: 999,
+        price: 600,
         period: "ticket",
         features: [
             "General admission entry",
@@ -12,34 +12,36 @@ export const pricingData: IPricing[] = [
             "Concert merchandise discount",
             "Digital concert program"
         ],
-        mostPopular: false
+        mostPopular: false,
+        color: "white"
     },
     {
-        name: "VIP",
-        price: 2999,
+        name: "Premium",
+        price: 1100,
         period: "ticket",
         features: [
             "Premium seating",
-            "Exclusive VIP lounge access",
-            "Complimentary refreshments",
-            "Meet & greet opportunity",
-            "Signed merchandise",
-            "Priority parking",
-            "Photo with artists"
+            "Priority entry",
+            "Food court access",
+            "Concert merchandise discount",
+            "Digital concert program"
         ],
-        mostPopular: true
+        mostPopular: false,
+        color: "navi-blue"
     },
     {
-        name: "Platinum",
-        price: 4999,
+        name: "VIP",
+        price: 2000,
         period: "ticket",
         features: [
             "Front row seating",
-            "Backstage tour",
-            "Private dining experience",
-            "Exclusive after-party access",
-            "Limited edition collectibles"
+            "Exclusive VIP lounge access",
+            "Complimentary refreshments",
+            "Meet & greet opportunity",
+            "Priority parking",
+            "Photo with artists"
         ],
-        mostPopular: false
+        mostPopular: true,
+        color: "dark-pink"
     }
 ];

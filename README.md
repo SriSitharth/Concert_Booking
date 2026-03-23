@@ -1,6 +1,6 @@
 # 41 Sounds - Live Concert Website
 
-A modern concert event website for the singing concert happening on **15 April 2026** in **Thiruvananthapuram, Kerala**.
+A modern concert event website for the singing concert happening on **16 May 2026, Saturday (6:30 PM - 9:30 PM)** in **Karthipuram, Coimbatore, Tamil Nadu**.
 
 ## Features
 

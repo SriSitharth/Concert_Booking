@@ -5,9 +5,9 @@ import { motion } from "motion/react";
 
 export default function HeroSection() {
     const specialFeatures = [
-        "Live performances",
-        "World-class artists",
-        "Unforgettable night",
+        "Live music by Chinmayi",
+        "Mind-blowing magic by Vicky",
+        "Fun for all ages",
     ];
 
     return (
@@ -23,7 +23,7 @@ export default function HeroSection() {
                     LIVE
                 </span>
                 <p className="flex items-center gap-1">
-                    <span>15 April 2026 • Thiruvananthapuram</span>
+                    <span>16 May 2026, Saturday • 6:30 PM - 9:30 PM • 📍 Karthipuram, Coimbatore</span>
                     <ChevronRightIcon size={16} className="group-hover:translate-x-0.5 transition duration-300" />
                 </p>
             </motion.a>
@@ -33,8 +33,8 @@ export default function HeroSection() {
                 viewport={{ once: true }}
                 transition={{ type: "spring", stiffness: 240, damping: 70, mass: 1 }}
             >
-                Experience the magic of{" "}
-                <span className="move-gradient px-3 rounded-xl">Music</span>
+                Mega Music & Magic{" "}
+                <span className="move-gradient px-3 rounded-xl">Night!</span> 
             </motion.h1>
             <motion.p className="text-base text-center text-slate-200 max-w-lg w-full mt-6 px-2"
                 initial={{ y: 50, opacity: 0 }}
@@ -42,7 +42,7 @@ export default function HeroSection() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2, type: "spring", stiffness: 320, damping: 70, mass: 1 }}
             >
-                Join us for an extraordinary singing concert featuring renowned artists. One night, countless memories - Thiruvananthapuram awaits you.</motion.p>
+                Get ready for an exciting evening filled with electrifying live music by renowned singer Chinmayi and mind-blowing magic tricks by Vicky!</motion.p>
             <motion.div className="flex flex-col sm:flex-row items-center gap-4 mt-8"
                 initial={{ y: 50, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
@@ -52,10 +52,6 @@ export default function HeroSection() {
                 <a href="#pricing" className="bg-pink-600 hover:bg-pink-700 text-white rounded-full px-7 h-11 flex items-center justify-center">
                     Book Tickets
                 </a>
-                <button className="flex items-center gap-2 border border-pink-900 hover:bg-pink-950/50 transition rounded-full px-6 h-11">
-                    <VideoIcon strokeWidth={1} />
-                    <span>Watch trailer</span>
-                </button>
             </motion.div>
 
             <div className="flex flex-wrap justify-center items-center gap-4 md:gap-14 mt-12">

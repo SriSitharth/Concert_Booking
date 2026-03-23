@@ -27,7 +27,7 @@ export default function ContactSection() {
                 </motion.a>
 
                 <motion.a 
-                    href="mailto:support@sugimx.com"
+                    href="mailto:connect@41sounds.com"
                     className="flex flex-col items-center gap-4 p-8 rounded-2xl border border-slate-800 bg-slate-950/50 hover:border-pink-600 transition-all w-full max-w-xs"
                     initial={{ y: 150, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
@@ -39,7 +39,7 @@ export default function ContactSection() {
                     </div>
                     <div className="text-center">
                         <p className="text-slate-400 text-sm mb-1">Email</p>
-                        <p className="text-white font-semibold text-lg">support@sugimx.com</p>
+                        <p className="text-white font-semibold text-lg">connect@41sounds.com</p>
                     </div>
                 </motion.a>
 
@@ -58,7 +58,7 @@ export default function ContactSection() {
                     </div>
                     <div className="text-center">
                         <p className="text-slate-400 text-sm mb-1">Instagram</p>
-                        <p className="text-white font-semibold text-lg">@tvkcup2026</p>
+                        <p className="text-white font-semibold text-lg">@41sounds</p>
                     </div>
                 </motion.a>
             </div>

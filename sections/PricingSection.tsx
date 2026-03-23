@@ -11,33 +11,41 @@ export default function PricingSection() {
             <SectionTitle text1="Tickets" text2="Choose Your Experience" text3="Select from our ticket categories and secure your spot at the most anticipated concert of the year." />
 
             <div className="flex flex-wrap items-center justify-center gap-8 mt-20">
-                {pricingData.map((plan: IPricing, index: number) => (
-                    <motion.div key={index} className={`w-72 text-center border border-pink-950 p-6 pb-16 rounded-xl ${plan.mostPopular ? 'bg-pink-950 relative' : 'bg-pink-950/30'}`}
+                {pricingData.map((plan: IPricing, index: number) => {
+                    const colorClasses = {
+                        'white': 'bg-white text-slate-900 border-slate-300',
+                        'navi-blue': 'bg-blue-950 text-white border-blue-800',
+                        'dark-pink': 'bg-pink-950 text-white border-pink-800'
+                    };
+                    const cardColor = colorClasses[plan.color as keyof typeof colorClasses] || 'bg-pink-950/30 text-white border-pink-950';
+                    
+                    return (
+                    <motion.div key={index} className={`w-72 text-center p-6 pb-16 rounded-xl border ${cardColor} ${plan.mostPopular ? 'relative' : ''}`}
                         initial={{ y: 150, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.15, type: "spring", stiffness: 320, damping: 70, mass: 1 }}
                     >
                         {plan.mostPopular && (
-                            <p className="absolute px-3 text-sm -top-3.5 left-3.5 py-1 bg-pink-400 rounded-full">Most Popular</p>
+                            <p className="absolute px-3 text-sm -top-3.5 left-3.5 py-1 bg-pink-400 text-white rounded-full">Most Popular</p>
                         )}
                         <p className="font-semibold">{plan.name}</p>
-                        <h1 className="text-3xl font-semibold">₹{plan.price}<span className="text-gray-500 font-normal text-sm">/{plan.period}</span></h1>
-                        <ul className="list-none text-slate-300 mt-6 space-y-2">
-                            {plan.features.map((feature, index) => (
-                                <li key={index} className="flex items-center gap-2">
-                                    <CheckIcon className="size-4.5 text-pink-600" />
+                        <h1 className="text-3xl font-semibold">₹{plan.price}<span className={`font-normal text-sm ${plan.color === 'white' ? 'text-slate-500' : 'text-gray-400'}`}>/{plan.period}</span></h1>
+                        <ul className={`list-none mt-6 space-y-2 ${plan.color === 'white' ? 'text-slate-700' : 'text-slate-300'}`}>
+                            {plan.features.map((feature, idx) => (
+                                <li key={idx} className="flex items-center gap-2">
+                                    <CheckIcon className={`size-4.5 ${plan.color === 'white' ? 'text-pink-600' : 'text-pink-400'}`} />
                                     <p>{feature}</p>
                                 </li>
                             ))}
                         </ul>
                         <a href="https://payments.cashfree.com/forms/tvkcup" target="_parent" className="block mt-7">
-                            <button type="button" className={`w-full py-2.5 rounded-md font-medium transition-all ${plan.mostPopular ? 'bg-white text-pink-600 hover:bg-slate-200' : 'bg-pink-500 hover:bg-pink-600'}`}>
+                            <button type="button" className={`w-full py-2.5 rounded-md font-medium transition-all ${plan.color === 'white' ? 'bg-pink-600 text-white hover:bg-pink-700' : 'bg-white text-pink-600 hover:bg-slate-200'}`}>
                                 Book Now
                             </button>
                         </a>
                     </motion.div>
-                ))}
+                )})}
             </div>
         </div>
     );

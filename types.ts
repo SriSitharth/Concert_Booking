@@ -55,6 +55,7 @@ export interface IPricing {
     period: string;
     features: string[];
     mostPopular: boolean;
+    color: string;
 }
 
 export interface SectionProps {

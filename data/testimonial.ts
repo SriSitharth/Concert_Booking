@@ -27,6 +27,6 @@ export const testimonialsData: ITestimonial[] = [
         name: 'Lakshmi Rajan',
         handle: '@lakshmir',
         date: 'December 22, 2024',
-        quote: 'Cannot wait for the Thiruvananthapuram show! Already booked my tickets. These concerts are always magical.',
+        quote: 'Cannot wait for the Coimbatore show! Already booked my tickets. These concerts are always magical.',
     },
 ];
