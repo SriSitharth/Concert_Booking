@@ -4,8 +4,8 @@ import { motion } from "motion/react";
 
 export default function TestimonialSection() {
     return (
-        <div id="pay" className="px-4 md:px-16 lg:px-24 xl:px-32 w-full overflow-hidden">
-            <SectionTitle text1="Pay" text2="Quick Payment" text3="Scan the QR code below to make a quick and secure payment for your concert tickets." />
+        <div id="seat" className="px-4 md:px-16 lg:px-24 xl:px-32 w-full overflow-hidden">
+            <SectionTitle text1="Seat" text2="Seating Information" text3="View the seating arrangement for the concert and choose your preferred spot." />
 
             <motion.div 
                 className="max-w-md mx-auto mt-16 p-8 bg-white rounded-2xl shadow-xl"
@@ -16,14 +16,14 @@ export default function TestimonialSection() {
             >
                 <div className="aspect-square relative bg-white p-4 rounded-xl">
                     <img 
-                        src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https://payments.cashfree.com/forms/tvkcup" 
-                        alt="Payment QR Code" 
+                        src="/assets/seats.jpg" 
+                        alt="Seating Arrangement" 
                         className="w-full h-full object-contain"
                     />
                 </div>
                 <div className="text-center mt-6">
-                    <p className="text-slate-800 font-semibold text-lg">Scan to Pay</p>
-                    <p className="text-slate-500 text-sm mt-2">Scan with your phone camera to open payment</p>
+                    <p className="text-slate-800 font-semibold text-lg">Seating Plan</p>
+                    <p className="text-slate-500 text-sm mt-2">View the seating chart to select your seat for the concert.</p>
                 </div>
             </motion.div>
 
@@ -35,7 +35,7 @@ export default function TestimonialSection() {
                 transition={{ delay: 0.2, type: "spring", stiffness: 320, damping: 70, mass: 1 }}
             >
                 <p className="text-slate-400 text-sm">
-                    After payment, please send your payment screenshot and ticket details to our WhatsApp or email for confirmation.
+                    For seat reservations or inquiries, please contact us via WhatsApp or email.
                 </p>
             </motion.div>
         </div>

@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 export default function ContactSection() {
     return (
-        <div className="px-4 md:px-16 lg:px-24 xl:px-32 w-full overflow-hidden">
+        <div id="contact" className="px-4 md:px-16 lg:px-24 xl:px-32 w-full overflow-hidden">
             <SectionTitle text1="Contact" text2="Get in touch" text3="Have questions about the concert? Reach out to us through any of these channels." />
             
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 mt-16 max-w-4xl mx-auto">

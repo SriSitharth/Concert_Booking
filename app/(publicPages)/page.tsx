@@ -10,8 +10,8 @@ export default function Page() {
         <div style={{ width: '100%' }}>
             <HeroSection />
             <FeaturesSection />
-            <PricingSection />
             <TestimonialSection />
+            <PricingSection />
             <ContactSection />
             <CTASection />
         </div>

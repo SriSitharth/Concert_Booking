@@ -9,7 +9,6 @@ export const pricingData: IPricing[] = [
             "General admission entry",
             "Standing area access",
             "Food court access",
-            "Concert merchandise discount",
             "Digital concert program"
         ],
         mostPopular: false,
@@ -23,7 +22,7 @@ export const pricingData: IPricing[] = [
             "Premium seating",
             "Priority entry",
             "Food court access",
-            "Concert merchandise discount",
+            "Merchandise discount",
             "Digital concert program"
         ],
         mostPopular: false,
