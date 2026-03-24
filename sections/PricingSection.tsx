@@ -39,11 +39,25 @@ export default function PricingSection() {
                                 </li>
                             ))}
                         </ul>
-                        <a href="https://payments.cashfree.com/forms/tvkcup" target="_parent" className="block mt-7">
-                            <button type="button" className={`w-full py-2.5 rounded-md font-medium transition-all ${plan.color === 'white' ? 'bg-pink-600 text-white hover:bg-pink-700' : 'bg-white text-pink-600 hover:bg-slate-200'}`}>
-                                Book Now
-                            </button>
-                        </a>
+                        {plan.color === "white" ? (
+                            <a href="https://payments.cashfree.com/forms/white600" target="_blank" rel="noopener noreferrer" className="block mt-7">
+                                <button type="button" className={`w-full py-2.5 rounded-md font-medium transition-all ${plan.color === 'white' ? 'bg-pink-600 text-white hover:bg-pink-700' : 'bg-white text-pink-600 hover:bg-slate-200'}`}>
+                                    Book Now
+                                </button>
+                            </a>
+                        ) : plan.color === "navi-blue" ? (
+                            <a href="https://payments.cashfree.com/forms/naviblue1100" target="_blank" rel="noopener noreferrer" className="block mt-7">
+                                <button type="button" className={`w-full py-2.5 rounded-md font-medium transition-all ${plan.color === 'navi-blue' ? 'bg-pink-600 text-white hover:bg-pink-700' : 'bg-white text-pink-600 hover:bg-slate-200'}`}>
+                                    Book Now
+                                </button>
+                            </a>
+                        ) : (
+                            <a href="https://payments.cashfree.com/forms/darkpink2000" target="_blank" rel="noopener noreferrer" className="block mt-7">
+                                <button type="button" className={`w-full py-2.5 rounded-md font-medium transition-all ${plan.color === 'dark-pink' ? 'bg-pink-600 text-white hover:bg-pink-700' : 'bg-white text-pink-600 hover:bg-slate-200'}`}>
+                                    Book Now
+                                </button>
+                            </a>
+                        )}
                     </motion.div>
                 )})}
             </div>
