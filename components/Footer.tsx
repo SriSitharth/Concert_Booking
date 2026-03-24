@@ -16,7 +16,7 @@ export default function Footer() {
                 transition={{ type: "spring", stiffness: 280, damping: 70, mass: 1 }}
             >
                 <a href="/">
-                    <Image className="size-8 aspect-square" src="/assets/footer-logo.svg" alt="concert logo" width={32} height={32} priority />
+                    <Image className="size-32 aspect-square" src="/assets/41logo.svg" alt="concert logo" width={32} height={32} priority />
                 </a>
                 {footerData.map((section, index) => (
                     <div key={index}>
@@ -39,7 +39,7 @@ export default function Footer() {
                 viewport={{ once: true }}
                 transition={{ type: "spring", stiffness: 280, damping: 70, mass: 1 }}
             >
-                <p className="max-w-60 md:text-right">Creating unforgettable musical experiences in the heart of Kerala.</p>
+                <p className="max-w-60 md:text-right">Creating unforgettable musical experiences in the heart of Coimbatore.</p>
                 <div className="flex items-center gap-4 mt-3">
                     <a href="https://41sounds.com" target="_blank" rel="noreferrer">
                         <DribbbleIcon className="size-5 hover:text-pink-500" />

@@ -12,15 +12,20 @@ export default function Navbar() {
 
     return (
         <>
-            <motion.nav className="fixed top-0 z-50 flex items-center justify-between w-full max-w-full py-4 px-4 md:px-16 lg:px-24 xl:px-32 backdrop-blur"
+            <motion.nav className="fixed top-0 z-50 flex items-center justify-between w-full max-w-full py-2 px-4 md:px-16 lg:px-24 xl:px-32 backdrop-blur"
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ type: "spring", stiffness: 250, damping: 70, mass: 1 }}
             >
-                <a href="/" className="text-xl font-bold text-white hover:text-pink-500 transition">
+                {/* <a href="/" className="text-xl font-bold text-white hover:text-pink-500 transition">
                     41sounds
+                </a> */}
+
+                <a href="/" className="flex items-center">
+                    <Image src="/assets/41logo.svg" alt="41 Sounds Logo" width={64} height={64} className="mr-2" priority />
                 </a>
+
 
                 <div className="hidden md:flex items-center gap-8 transition duration-500">
                     {navlinks.map((link: INavLink) => (
