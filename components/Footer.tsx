@@ -1,6 +1,6 @@
 'use client'
 import { footerData } from "@/data/footer";
-import { DribbbleIcon, LinkedinIcon, TwitterIcon, YoutubeIcon } from "lucide-react";
+import { DribbbleIcon, LinkedinIcon, TwitterIcon, YoutubeIcon, FacebookIcon, InstagramIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
@@ -44,14 +44,11 @@ export default function Footer() {
                     <a href="https://41sounds.com" target="_blank" rel="noreferrer">
                         <DribbbleIcon className="size-5 hover:text-pink-500" />
                     </a>
-                    <a href="https://www.linkedin.com/company/41sounds" target="_blank" rel="noreferrer">
-                        <LinkedinIcon className="size-5 hover:text-pink-500" />
+                    <a href="https://www.facebook.com/profile.php?id=61577670155503&mibextid=wwXIfr&rdid=YGnDIa3wXdVAZQAv&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F14czFRcbu3w%2F%3Fmibextid%3DwwXIfr#" target="_blank" rel="noreferrer">
+                        <FacebookIcon className="size-5 hover:text-pink-500" />
                     </a>
-                    <a href="https://x.com/41sounds" target="_blank" rel="noreferrer">
-                        <TwitterIcon className="size-5 hover:text-pink-500" />
-                    </a>
-                    <a href="https://www.youtube.com/@41sounds" target="_blank" rel="noreferrer">
-                        <YoutubeIcon className="size-6 hover:text-pink-500" />
+                    <a href="https://www.instagram.com/41__sounds/" target="_blank" rel="noreferrer">
+                        <InstagramIcon className="size-5 hover:text-pink-500" />
                     </a>
                 </div>
                 <p className="mt-3">&copy; {new Date().getFullYear()} <a href="https://41sounds.com" target="_blank" rel="noreferrer" className="hover:text-pink-500">41 Sounds</a></p>

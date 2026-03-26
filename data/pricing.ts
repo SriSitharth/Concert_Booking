@@ -7,7 +7,7 @@ export const pricingData: IPricing[] = [
         period: "ticket",
         features: [
             "General admission entry",
-            "Standing area access",
+            "Seating access",
             "Food court access",
             "Digital concert program"
         ],
@@ -22,7 +22,7 @@ export const pricingData: IPricing[] = [
             "Premium seating",
             "Priority entry",
             "Food court access",
-            "Merchandise discount",
+            "Vicky performance access",
             "Digital concert program"
         ],
         mostPopular: false,
@@ -35,10 +35,10 @@ export const pricingData: IPricing[] = [
         features: [
             "Front row seating",
             "Exclusive VIP lounge access",
-            "Complimentary refreshments",
+            "Food court access",
             "Meet & greet opportunity",
             "Priority parking",
-            "Photo with artists"
+            "Close look with artists"
         ],
         mostPopular: true,
         color: "dark-pink"

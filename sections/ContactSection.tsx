@@ -44,7 +44,7 @@ export default function ContactSection() {
                 </motion.a>
 
                 <motion.a 
-                    href="https://www.instagram.com/tvkcup2026/"
+                    href="https://www.instagram.com/41__sounds/"
                     target="_blank"
                     rel="noreferrer"
                     className="flex flex-col items-center gap-4 p-8 rounded-2xl border border-slate-800 bg-slate-950/50 hover:border-pink-600 transition-all w-full max-w-xs"
