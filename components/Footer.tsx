@@ -8,15 +8,15 @@ import { IFooterLink } from "@/types";
 
 export default function Footer() {
     return (
-        <footer className="flex flex-wrap justify-center md:justify-between overflow-hidden gap-10 md:gap-20 mt-40 py-6 px-6 md:px-16 lg:px-24 xl:px-32 text-[13px] text-gray-500 w-full">
-            <motion.div className="flex flex-wrap items-start gap-10 md:gap-35"
+        <footer className="flex flex-wrap justify-center md:justify-between overflow-hidden gap-10 mt-40 py-6 px-6 md:px-16 lg:px-24 xl:px-32 text-[13px] text-gray-500 w-full">
+            <motion.div className="flex flex-wrap items-start gap-8 md:gap-10 lg:gap-20 xl:gap-35"
                 initial={{ x: -150, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ type: "spring", stiffness: 280, damping: 70, mass: 1 }}
             >
                 <a href="/">
-                    <Image className="size-32 aspect-square" src="/assets/41logo.svg" alt="concert logo" width={32} height={32} priority />
+                    <Image className="size-26 aspect-square" src="/assets/41logo.svg" alt="concert logo" width={32} height={32} priority />
                 </a>
                 {footerData.map((section, index) => (
                     <div key={index}>
