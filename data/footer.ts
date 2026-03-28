@@ -11,21 +11,21 @@ export const footerData: IFooter[] = [
             { name: "Contact", href: "#contact" },
         ]
     },
-    {
-        title: "Info",
-        links: [
-            { name: "Artists", href: "#artists" },
-            { name: "Venue", href: "#venue" },
-            { name: "Schedule", href: "#schedule" },
-            { name: "FAQ", href: "#faq" },
-        ]
-    },
+    // {
+    //     title: "Info",
+    //     links: [
+    //         { name: "Artists", href: "#artists" },
+    //         { name: "Venue", href: "#venue" },
+    //         { name: "Schedule", href: "#schedule" },
+    //         { name: "FAQ", href: "#faq" },
+    //     ]
+    // },
     {
         title: "Legal",
         links: [
+            { name: "Terms", href: "/terms" },
             { name: "Privacy Policy", href: "/privacy" },
-            { name: "Terms & Conditions", href: "/terms" },
-            { name: "Refunds & Cancellations", href: "/refunds" },
+            { name: "Refund Policy", href: "/refunds" },
         ]
     }
 ];
