@@ -1,6 +1,12 @@
 import React from 'react';
 import styles from './success.module.css';
 
+export const metadata = {
+    title: "Payment Confirmed | 41 Sounds Concert Tickets",
+    description: "Your concert ticket payment has been confirmed. You will receive booking details via email once all seats are booked.",
+    robots: "noindex, follow",
+};
+
 export default function SuccessPage() {
   return (
     <div className={styles.successWrapper}>

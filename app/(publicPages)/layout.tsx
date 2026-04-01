@@ -4,7 +4,8 @@ import React from "react";
 
 export const metadata = {
     title: "41 Sounds - Live Concert",
-    description: "pixels is a next.js template for building modern, fast, and secure saas applications.",
+    description: "Chinmayi Live Concert – Mega Music & Magic Night | Coimbatore | 16 May 2026, 6:30 PM",
+    keywords: "concert tickets, live music tickets, Chinmayi concert, music events, ticket booking online, live performance, Coimbatore concert, music show, event ticketing, concert experience",
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

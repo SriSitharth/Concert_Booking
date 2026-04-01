@@ -8,23 +8,23 @@ const poppins = Poppins({
     variable: "--font-poppins",
 });
 
+export const metadata = {
+    title: "41 Sounds - Buy Live Concert Tickets Online | Chinmayi Live Music Event",
+    description: "Book tickets for Chinmayi Live Concert - 41 Sounds. Experience mega music & magic night in Coimbatore on 16 May 2026. Secure online ticketing.",
+    keywords: "concert tickets, live music, Chinmayi concert, music event, ticket booking, live performance, Coimbatore events, music festival, concert tickets online, event booking",
+    openGraph: {
+        title: "41 Sounds - Live Concert Tickets | Chinmayi Music Event",
+        description: "Book your tickets for Chinmayi Live Concert - 41 Sounds. Mega Music & Magic Night on 16 May 2026 in Coimbatore.",
+        type: "website",
+    },
+};
+
 export default function RootLayout({ children, }: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
         <html lang="en" style={{ width: '100%', minHeight: '100%' }}>
             <head>
-                {/* Google Tag Manager */}
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PB9TZMF8');`,
-                    }}
-                />
-                {/* End Google Tag Manager */}
                 {/* Google Analytics (gtag.js) */}
                 <script
                     async
@@ -33,10 +33,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <script
                     dangerouslySetInnerHTML={{
                         __html: `window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+                            function gtag(){dataLayer.push(arguments);}
+                            gtag('js', new Date());
 
-  gtag('config', 'G-6Z10BNN7T2');`,
+                            gtag('config', 'G-6Z10BNN7T2');`,
                     }}
                 />
                 {/* End Google Analytics */}
@@ -44,16 +44,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <link rel="preload" href="/assets/background-splash.svg" as="image" />
             </head>
             <body style={{ width: '100%', minHeight: '100%' }}>
-                {/* Google Tag Manager (noscript) */}
-                <noscript>
-                    <iframe
-                        src="https://www.googletagmanager.com/ns.html?id=GTM-PB9TZMF8"
-                        height="0"
-                        width="0"
-                        style={{ display: 'none', visibility: 'hidden' }}
-                    ></iframe>
-                </noscript>
-                {/* End Google Tag Manager (noscript) */}
                 <LenisScroll />
                 {children}
             </body>

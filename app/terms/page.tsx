@@ -1,5 +1,11 @@
 import React from 'react';
 
+export const metadata = {
+    title: "Terms & Conditions | 41 Sounds Concert Tickets",
+    description: "Read our terms and conditions for purchasing tickets to 41 Sounds concerts. Important information about ticket usage, intellectual property, and user agreements.",
+    robots: "index, follow",
+};
+
 const TermsPage = () => (
   <main className="max-w-3xl mx-auto px-4 py-12 bg-white rounded-lg shadow-md mt-12 mb-24">
     <h1 className="text-3xl md:text-4xl font-bold text-pink-600 mb-2 text-center">Terms & Conditions</h1>

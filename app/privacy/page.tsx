@@ -1,5 +1,11 @@
 import React from 'react';
 
+export const metadata = {
+    title: "Privacy Policy | 41 Sounds Concert Tickets",
+    description: "Our privacy policy explains how we collect, use, and protect your personal information when you purchase concert tickets and use our services.",
+    robots: "index, follow",
+};
+
 const PrivacyPage = () => (
   <main className="max-w-3xl mx-auto px-4 py-12 bg-white rounded-lg shadow-md mt-12 mb-24">
     <h1 className="text-3xl md:text-4xl font-bold text-pink-600 mb-2 text-center">Privacy Policy</h1>

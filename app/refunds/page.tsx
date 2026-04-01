@@ -1,5 +1,11 @@
 import React from 'react';
 
+export const metadata = {
+    title: "Refunds & Cancellations Policy | 41 Sounds Concerts",
+    description: "Learn about our refund, cancellation, and event change policies for 41 Sounds concert tickets. All ticket sales terms and conditions explained.",
+    robots: "index, follow",
+};
+
 const RefundsPage = () => (
   <main className="max-w-3xl mx-auto px-4 py-12 bg-white rounded-lg shadow-md mt-12 mb-24">
     <h1 className="text-3xl md:text-4xl font-bold text-pink-600 mb-2 text-center">Refunds & Cancellations</h1>
