@@ -25,6 +25,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     }}
                 />
                 {/* End Google Tag Manager */}
+                {/* Google Analytics (gtag.js) */}
+                <script
+                    async
+                    src="https://www.googletagmanager.com/gtag/js?id=G-6Z10BNN7T2"
+                />
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6Z10BNN7T2');`,
+                    }}
+                />
+                {/* End Google Analytics */}
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <link rel="preload" href="/assets/background-splash.svg" as="image" />
             </head>
