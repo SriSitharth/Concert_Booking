@@ -23,7 +23,7 @@ export default function HeroSection() {
                     LIVE
                 </span>
                 <p className="flex items-center gap-1">
-                    <span>16 May 2026, Saturday • 6:30 PM - 9:30 PM • 📍 Karthipuram, Coimbatore</span>
+                    <span>16 May 2026, Saturday • 6:30 PM - 10:00 PM • 📍 Karthipuram, Neelambur, Coimbatore</span>
                     <ChevronRightIcon size={16} className="group-hover:translate-x-0.5 transition duration-300" />
                 </p>
             </motion.a>
