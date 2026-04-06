@@ -69,7 +69,7 @@ export default function FeaturesSection() {
                 {/* Inserted image between features and 3D banner */}
                 <div className="flex justify-center mt-16">
                     <Image
-                        src="/assets/Banner1.jpeg"
+                        src="/assets/Banner3.jpeg"
                         alt="Event highlight"
                         width={800}
                         height={400}
