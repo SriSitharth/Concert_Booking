@@ -26,6 +26,13 @@ interface CashfreeWebhookPayload {
   type: string;
 }
 
+// Allowed forms - only send messages for these forms
+const ALLOWED_FORMS = [
+  'https://payments.cashfree.com/forms/darkpink2000',
+  'https://payments.cashfree.com/forms/naviblue1100',
+  'https://payments.cashfree.com/forms/white600',
+];
+
 interface WhatsAppTemplateParam {
   type: 'text';
   text: string;
@@ -71,11 +78,153 @@ function formatPhoneNumber(phone: string): string {
   return cleaned;
 }
 
+// Utility function to send email
+async function sendEmail(
+  customerName: string,
+  customerEmail: string,
+  orderId: string,
+  orderAmount?: number
+): Promise<void> {
+  const emailService = process.env.EMAIL_SERVICE || 'gmail'; // 'gmail', 'mailgun', 'resend', or 'smtp'
+  
+  if (!customerEmail) {
+    throw new Error('Customer email not provided');
+  }
+
+  // Email content
+  const subject = `Order Confirmation: ${orderId}`;
+  const htmlContent = `
+    <html>
+      <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+        <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+          <h2 style="color: #2c3e50;">Thank you for your order!</h2>
+          
+          <p>Hi <strong>${customerName}</strong>,</p>
+          
+          <p>Your payment has been received and confirmed.</p>
+          
+          <div style="background-color: #f8f9fa; padding: 15px; border-left: 4px solid #007bff; margin: 20px 0;">
+            <p><strong>Order ID:</strong> ${orderId}</p>
+            ${orderAmount ? `<p><strong>Amount:</strong> ₹${orderAmount}</p>` : ''}
+            <p><strong>Date:</strong> ${new Date().toLocaleDateString('en-IN')}</p>
+          </div>
+          
+          <p>You should receive a WhatsApp confirmation message shortly with your ticket details.</p>
+          
+          <p>If you have any questions, please reply to this email.</p>
+          
+          <p>Best regards,<br><strong>Concert Team</strong></p>
+          
+          <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;">
+          <p style="font-size: 12px; color: #999;">This is an automated email. Please do not reply directly to this email.</p>
+        </div>
+      </body>
+    </html>
+  `;
+
+  const textContent = `
+    Thank you for your order!
+    
+    Hi ${customerName},
+    
+    Your payment has been received and confirmed.
+    
+    Order ID: ${orderId}
+    ${orderAmount ? `Amount: ₹${orderAmount}` : ''}
+    Date: ${new Date().toLocaleDateString('en-IN')}
+    
+    You should receive a WhatsApp confirmation message shortly with your ticket details.
+    
+    If you have any questions, please reply to this email.
+    
+    Best regards,
+    Concert Team
+  `;
+
+  try {
+    if (emailService === 'resend') {
+      // Using Resend API (npm install resend)
+      const { Resend } = require('resend');
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      
+      await resend.emails.send({
+        from: process.env.EMAIL_FROM || 'noreply@example.com',
+        to: customerEmail,
+        subject: subject,
+        html: htmlContent,
+        text: textContent,
+      });
+    } else if (emailService === 'smtp' || emailService === 'gmail') {
+      // Using Nodemailer (npm install nodemailer)
+      const nodemailer = require('nodemailer');
+      
+      let transporter;
+      
+      if (emailService === 'smtp') {
+        // Generic SMTP (Zoho Mail, AWS SES, etc.)
+        transporter = nodemailer.createTransport({
+          host: process.env.EMAIL_HOST,
+          port: parseInt(process.env.EMAIL_PORT || '465'),
+          secure: process.env.EMAIL_SECURE === 'true', // true for 465, false for other ports
+          auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASSWORD,
+          },
+        });
+      } else {
+        // Gmail specific
+        transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASSWORD, // Gmail App Password
+          },
+        });
+      }
+
+      await transporter.sendMail({
+        from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
+        to: customerEmail,
+        subject: subject,
+        html: htmlContent,
+        text: textContent,
+      });
+    } else if (emailService === 'mailgun') {
+      // Using Mailgun API
+      const mailgun = require('mailgun.js');
+      const mg = mailgun.client({
+        username: 'api',
+        key: process.env.MAILGUN_API_KEY,
+      });
+
+      await mg.messages.create(process.env.MAILGUN_DOMAIN, {
+        from: process.env.EMAIL_FROM || `noreply@${process.env.MAILGUN_DOMAIN}`,
+        to: customerEmail,
+        subject: subject,
+        html: htmlContent,
+        text: textContent,
+      });
+    } else {
+      throw new Error(`Unknown email service: ${emailService}`);
+    }
+
+    console.log('📧 Email sent successfully:', {
+      to: customerEmail,
+      orderId: orderId,
+      timestamp: new Date().toISOString(),
+    });
+  } catch (error) {
+    console.error('❌ Email service error:', error);
+    throw error;
+  }
+}
+
 // Utility function to send WhatsApp message
 async function sendWhatsAppMessage(
   customerName: string,
-  customerId: string,
-  phoneNumber: string
+  orderId: string,
+  phoneNumber: string,
+  orderAmount: string | number
 ): Promise<void> {
   const accessToken = process.env.WHATSAPP_ACCESS_TOKEN;
   const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
@@ -90,12 +239,20 @@ async function sendWhatsAppMessage(
     throw new Error(`Invalid phone number format: ${formattedPhone}`);
   }
 
+  // Format booking date as DD MMM YYYY
+  const today = new Date();
+  const formattedDate = today.toLocaleDateString('en-IN', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+  });
+
   const requestBody: WhatsAppRequestBody = {
     messaging_product: 'whatsapp',
     to: formattedPhone,
     type: 'template',
     template: {
-      name: 'ticket_confirmation',
+      name: 'payment_confirmation_3',
       language: {
         code: 'en',
       },
@@ -109,7 +266,19 @@ async function sendWhatsAppMessage(
             },
             {
               type: 'text',
-              text: customerId,
+              text: 'Concert Ticket Booking',
+            },
+            {
+              type: 'text',
+              text: orderId,
+            },
+            {
+              type: 'text',
+              text: formattedDate,
+            },
+            {
+              type: 'text',
+              text: String(orderAmount),
             },
           ],
         },
@@ -117,7 +286,7 @@ async function sendWhatsAppMessage(
     },
   };
 
-  const url = `https://graph.facebook.com/v18.0/${phoneNumberId}/messages`;
+  const url = `https://graph.facebook.com/v25.0/${phoneNumberId}/messages`;
 
   const response = await fetch(url, {
     method: 'POST',
@@ -226,36 +395,45 @@ export async function POST(request: NextRequest) {
 
     console.log(`✅ Payment successful for order: ${order.order_id}`);
 
-    // Optional: Verify Cashfree webhook signature (if secret key is provided)
-    const cashfreeSecret = process.env.CASHFREE_WEBHOOK_SECRET;
-    if (cashfreeSecret) {
-      const signature = request.headers.get('x-cashfree-signature');
-      const rawBody = await request.text();
-      
-      if (!signature || !verifyCashfreeSignature(rawBody, signature, cashfreeSecret)) {
-        console.error('❌ Webhook signature verification failed');
-        return NextResponse.json(
-          { success: false, error: 'Signature verification failed' },
-          { status: 200 }
-        );
-      }
+    // Check if this form is in the allowed list
+    const formUrl = payload.data.form?.form_url;
+    const isAllowedForm = ALLOWED_FORMS.includes(formUrl || '');
+    
+    if (!isAllowedForm) {
+      console.log(`⏭️  Form ${formUrl} not in allowed list. Skipping notifications.`);
+      return NextResponse.json(
+        { success: true, message: 'Payment successful but form not in allowed list' },
+        { status: 200 }
+      );
     }
+
+    console.log(`✅ Form is allowed: ${formUrl}`);
 
     // Extract required data
     const customer_name = customerDetails.customer_name;
     const customer_phone = customerDetails.customer_phone;
+    const customer_email = customerDetails.customer_email;
     const order_id = order.order_id;
+    const order_amount = order.order_amount;
 
-    console.log(`📤 Preparing to send WhatsApp message to ${customer_phone}`);
+    console.log(`📤 Preparing to send notifications to ${customer_phone} and ${customer_email}`);
 
     // Send WhatsApp message
     try {
-      await sendWhatsAppMessage(customer_name, order_id, customer_phone);
+      await sendWhatsAppMessage(customer_name, order_id, customer_phone, order_amount);
       console.log(`✅ WhatsApp message sent successfully for order: ${order_id}`);
     } catch (whatsappError) {
       console.error('❌ WhatsApp API error:', whatsappError);
       // Log the error but still return 200 to Cashfree
-      // In production, you might want to implement a retry mechanism
+    }
+
+    // Send Email
+    try {
+      await sendEmail(customer_name, customer_email, order_id, order_amount);
+      console.log(`✅ Email sent successfully for order: ${order_id}`);
+    } catch (emailError) {
+      console.error('❌ Email service error:', emailError);
+      // Log the error but still return 200 to Cashfree
     }
 
     // Log successful processing
