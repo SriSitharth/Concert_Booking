@@ -109,11 +109,11 @@ async function sendEmail(
             <p><strong>Date:</strong> ${new Date().toLocaleDateString('en-IN')}</p>
           </div>
           
-          <p>You should receive a WhatsApp confirmation message shortly with your ticket details.</p>
+          <p>Your booking is being processed, and you will receive your ticket details via email or WhatsApp once the seats are completely booked.</p>
           
-          <p>If you have any questions, please reply to this email.</p>
+          <p>If you have any questions, please contact our support team.</p>
           
-          <p>Best regards,<br><strong>Concert Team</strong></p>
+          <p>Best regards,<br><strong>41Sounds Team</strong></p>
           
           <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;">
           <p style="font-size: 12px; color: #999;">This is an automated email. Please do not reply directly to this email.</p>
@@ -133,12 +133,12 @@ async function sendEmail(
     ${orderAmount ? `Amount: ₹${orderAmount}` : ''}
     Date: ${new Date().toLocaleDateString('en-IN')}
     
-    You should receive a WhatsApp confirmation message shortly with your ticket details.
+    Your booking is being processed, and you will receive your ticket details via email or WhatsApp once the seats are completely booked.
     
-    If you have any questions, please reply to this email.
+    If you have any questions, please contact our support team.
     
     Best regards,
-    Concert Team
+    41Sounds Team
   `;
 
   try {
