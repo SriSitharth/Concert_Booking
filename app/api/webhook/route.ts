@@ -47,7 +47,7 @@ interface WhatsAppRequestBody {
     language: {
       code: string;
     };
-    components: Array<{
+    components?: Array<{
       type: 'body';
       parameters: WhatsAppTemplateParam[];
     }>;
@@ -252,37 +252,37 @@ async function sendWhatsAppMessage(
     to: formattedPhone,
     type: 'template',
     template: {
-      name: 'payment_confirmation_3',
+      name: 'hello_world',
       language: {
-        code: 'en',
+        code: 'en_US',
       },
-      components: [
-        {
-          type: 'body',
-          parameters: [
-            {
-              type: 'text',
-              text: customerName,
-            },
-            {
-              type: 'text',
-              text: 'Concert Ticket Booking',
-            },
-            {
-              type: 'text',
-              text: orderId,
-            },
-            {
-              type: 'text',
-              text: formattedDate,
-            },
-            {
-              type: 'text',
-              text: String(orderAmount),
-            },
-          ],
-        },
-      ],
+      // components: [
+      //   {
+      //     type: 'body',
+      //     parameters: [
+      //       {
+      //         type: 'text',
+      //         text: customerName,
+      //       },
+      //       {
+      //         type: 'text',
+      //         text: 'Concert Ticket Booking',
+      //       },
+      //       {
+      //         type: 'text',
+      //         text: orderId,
+      //       },
+      //       {
+      //         type: 'text',
+      //         text: formattedDate,
+      //       },
+      //       {
+      //         type: 'text',
+      //         text: String(orderAmount),
+      //       },
+      //     ],
+      //   },
+      // ],
     },
   };
 
