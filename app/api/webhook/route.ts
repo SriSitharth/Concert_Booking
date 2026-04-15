@@ -119,15 +119,21 @@ async function sendEmail(
           <p>Hi <strong>${customerName}</strong> 🎉</p>
           
           <p>Your payment has been received and confirmed.</p>
+
+          <p>Thank you for booking your ${ticketCategory} ticket for our upcoming Mega Music & Magic Night! event on 16 May 2026.</p>
           
           <div style="background-color: #f8f9fa; padding: 15px; border-left: 4px solid #007bff; margin: 20px 0;">
             <p><strong>Order ID:</strong> ${orderId}</p>
             ${ticketInfo}
             <p><strong>Booking Date:</strong> ${new Date().toLocaleDateString('en-IN')}</p>
+            <p>📍 Venue: Karthipuram, Neelambur, Coimbatore</p>
+            <p>🕡 Time: 6:30 PM</p>
           </div>
           
           <p>Your booking is being processed, and you will receive your ticket details via email or WhatsApp once the seats are completely booked.</p>
           
+          <p>We look forward to hosting you for an unforgettable evening of music and entertainment.</p>
+
           <p>If you have any questions, please contact our support team.</p>
           
           <p>Best regards,<br><strong>41Sounds Team</strong></p>
@@ -149,13 +155,19 @@ async function sendEmail(
     Hi ${customerName},
     
     Your payment has been received and confirmed.
+
+    Thank you for booking your ${ticketCategory} ticket for our upcoming Mega Music & Magic Night! event on 16 May 2026.
     
     Order ID: ${orderId}
     ${ticketTextInfo}
     Booking Date: ${new Date().toLocaleDateString('en-IN')}
+    📍 Venue: Karthipuram, Neelambur, Coimbatore 
+    🕡 Time: 6:30 PM
     
     Your booking is being processed, and you will receive your ticket details via email or WhatsApp once the seats are completely booked.
     
+    We look forward to hosting you for an unforgettable evening of music and entertainment.
+
     If you have any questions, please contact our support team.
     
     Best regards,
