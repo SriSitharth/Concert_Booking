@@ -33,6 +33,13 @@ const ALLOWED_FORMS = [
   'https://payments.cashfree.com/forms/white600',
 ];
 
+// Ticket category mapping
+const TICKET_CATEGORIES = {
+  'https://payments.cashfree.com/forms/darkpink2000': { category: 'VIP', price: 2052.5 },
+  'https://payments.cashfree.com/forms/naviblue1100': { category: 'Premium', price: 1152.5 },
+  'https://payments.cashfree.com/forms/white600': { category: 'General', price: 652.5 },
+};
+
 interface WhatsAppTemplateParam {
   type: 'text';
   text: string;
@@ -83,7 +90,10 @@ async function sendEmail(
   customerName: string,
   customerEmail: string,
   orderId: string,
-  orderAmount?: number
+  orderAmount?: number,
+  ticketCategory?: string,
+  numberOfTickets?: number,
+  singleTicketPrice?: number
 ): Promise<void> {
   const emailService = process.env.EMAIL_SERVICE || 'gmail'; // 'gmail', 'mailgun', 'resend', or 'smtp'
   
@@ -92,21 +102,28 @@ async function sendEmail(
   }
 
   // Email content
-  const subject = `Order Confirmation: ${orderId}`;
+  const subject = `🎵 Concert Ticket Booking Confirmation: ${orderId}`;
+  const ticketInfo = ticketCategory && numberOfTickets && singleTicketPrice
+    ? `<p><strong>Ticket Category:</strong> ${ticketCategory}</p>
+       <p><strong>Ticket Price:</strong> ₹${singleTicketPrice}</p>
+       <p><strong>Number of Tickets:</strong> ${numberOfTickets}</p>
+       <p><strong>Total Amount:</strong> ₹${orderAmount}</p>` 
+    : '';
+  
   const htmlContent = `
     <html>
       <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
         <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
           <h2 style="color: #2c3e50;">Thank you for your order!</h2>
           
-          <p>Hi <strong>${customerName}</strong>,</p>
+          <p>Hi <strong>${customerName}</strong> 🎉</p>
           
           <p>Your payment has been received and confirmed.</p>
           
           <div style="background-color: #f8f9fa; padding: 15px; border-left: 4px solid #007bff; margin: 20px 0;">
             <p><strong>Order ID:</strong> ${orderId}</p>
-            ${orderAmount ? `<p><strong>Amount:</strong> ₹${orderAmount}</p>` : ''}
-            <p><strong>Date:</strong> ${new Date().toLocaleDateString('en-IN')}</p>
+            ${ticketInfo}
+            <p><strong>Booking Date:</strong> ${new Date().toLocaleDateString('en-IN')}</p>
           </div>
           
           <p>Your booking is being processed, and you will receive your ticket details via email or WhatsApp once the seats are completely booked.</p>
@@ -122,6 +139,10 @@ async function sendEmail(
     </html>
   `;
 
+  const ticketTextInfo = ticketCategory && numberOfTickets && singleTicketPrice
+    ? `Ticket Category: ${ticketCategory}\n    Ticket Price: ₹${singleTicketPrice}\n    Number of Tickets: ${numberOfTickets}\n    Total Amount: ₹${orderAmount}\n    ` 
+    : '';
+  
   const textContent = `
     Thank you for your order!
     
@@ -130,8 +151,8 @@ async function sendEmail(
     Your payment has been received and confirmed.
     
     Order ID: ${orderId}
-    ${orderAmount ? `Amount: ₹${orderAmount}` : ''}
-    Date: ${new Date().toLocaleDateString('en-IN')}
+    ${ticketTextInfo}
+    Booking Date: ${new Date().toLocaleDateString('en-IN')}
     
     Your booking is being processed, and you will receive your ticket details via email or WhatsApp once the seats are completely booked.
     
@@ -224,7 +245,8 @@ async function sendWhatsAppMessage(
   customerName: string,
   orderId: string,
   phoneNumber: string,
-  orderAmount: string | number
+  orderAmount: string | number,
+  ticketCategory?: string
 ): Promise<void> {
   const accessToken = process.env.WHATSAPP_ACCESS_TOKEN;
   const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
@@ -252,37 +274,37 @@ async function sendWhatsAppMessage(
     to: formattedPhone,
     type: 'template',
     template: {
-      name: 'hello_world',
+      name: 'payment_confirmation_3',
       language: {
         code: 'en_US',
       },
-      // components: [
-      //   {
-      //     type: 'body',
-      //     parameters: [
-      //       {
-      //         type: 'text',
-      //         text: customerName,
-      //       },
-      //       {
-      //         type: 'text',
-      //         text: 'Concert Ticket Booking',
-      //       },
-      //       {
-      //         type: 'text',
-      //         text: orderId,
-      //       },
-      //       {
-      //         type: 'text',
-      //         text: formattedDate,
-      //       },
-      //       {
-      //         type: 'text',
-      //         text: String(orderAmount),
-      //       },
-      //     ],
-      //   },
-      // ],
+      components: [
+        {
+          type: 'body',
+          parameters: [
+            {
+              type: 'text',
+              text: customerName,
+            },
+            {
+              type: 'text',
+              text: ticketCategory || 'Concert Ticket',
+            },
+            {
+              type: 'text',
+              text: orderId,
+            },
+            {
+              type: 'text',
+              text: formattedDate,
+            },
+            {
+              type: 'text',
+              text: String(orderAmount),
+            },
+          ],
+        },
+      ],
     },
   };
 
@@ -418,9 +440,15 @@ export async function POST(request: NextRequest) {
 
     console.log(`📤 Preparing to send notifications to ${customer_phone} and ${customer_email}`);
 
+    // Get ticket category and calculate number of tickets
+    const ticketInfo = TICKET_CATEGORIES[formUrl as keyof typeof TICKET_CATEGORIES];
+    const ticketCategory = ticketInfo?.category;
+    const singleTicketPrice = ticketInfo?.price;
+    const numberOfTickets = ticketInfo ? Math.round(order_amount / ticketInfo.price) : undefined;
+
     // Send WhatsApp message
     try {
-      await sendWhatsAppMessage(customer_name, order_id, customer_phone, order_amount);
+      await sendWhatsAppMessage(customer_name, order_id, customer_phone, order_amount, ticketCategory);
       console.log(`✅ WhatsApp message sent successfully for order: ${order_id}`);
     } catch (whatsappError) {
       console.error('❌ WhatsApp API error:', whatsappError);
@@ -429,7 +457,7 @@ export async function POST(request: NextRequest) {
 
     // Send Email
     try {
-      await sendEmail(customer_name, customer_email, order_id, order_amount);
+      await sendEmail(customer_name, customer_email, order_id, order_amount, ticketCategory, numberOfTickets, singleTicketPrice);
       console.log(`✅ Email sent successfully for order: ${order_id}`);
     } catch (emailError) {
       console.error('❌ Email service error:', emailError);
