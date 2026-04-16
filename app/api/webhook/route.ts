@@ -118,25 +118,21 @@ async function sendEmail(
           
           <p>Hi <strong>${customerName}</strong> 🎉</p>
           
-          <p>Your payment has been received and confirmed.</p>
+          <p>Please be informed that your payment has been successfully received and confirmed.</p>
 
-          <p>Thank you for booking your ${ticketCategory} ticket for our upcoming Mega Music & Magic Night! event on 16 May 2026.</p>
+          <p>Thank you for booking your ${ticketCategory} tickets for our upcoming Mega Music & Magic Night! event on 16 May 2026 at Karthipuram, Neelambur, Coimbatore at 6:30 PM.</p>
           
           <div style="background-color: #f8f9fa; padding: 15px; border-left: 4px solid #007bff; margin: 20px 0;">
             <p><strong>Order ID:</strong> ${orderId}</p>
             ${ticketInfo}
             <p><strong>Booking Date:</strong> ${new Date().toLocaleDateString('en-IN')}</p>
-            <p>📍 Venue: Karthipuram, Neelambur, Coimbatore</p>
-            <p>🕡 Time: 6:30 PM</p>
           </div>
           
-          <p>Your booking is being processed, and you will receive your ticket details via email or WhatsApp once the seats are completely booked.</p>
+          <p>Your booking is being processed, and you will receive your ticket details via email/whatsapp anytime before the event.</p>
           
           <p>We look forward to hosting you for an unforgettable evening of music and entertainment.</p>
-
-          <p>If you have any questions, please contact our support team.</p>
           
-          <p>Best regards,<br><strong>41Sounds Team</strong></p>
+          <p>Best Regards,<br><strong>Team 41Sounds</strong></p>
           
           <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;">
           <p style="font-size: 12px; color: #999;">This is an automated email. Please do not reply directly to this email.</p>
@@ -154,24 +150,20 @@ async function sendEmail(
     
     Hi ${customerName},
     
-    Your payment has been received and confirmed.
+    Please be informed that your payment has been successfully received and confirmed.
 
-    Thank you for booking your ${ticketCategory} ticket for our upcoming Mega Music & Magic Night! event on 16 May 2026.
+    Thank you for booking your ${ticketCategory} tickets for our upcoming Mega Music & Magic Night! event on 16 May 2026 at Karthipuram, Neelambur, Coimbatore at 6:30 PM.
     
     Order ID: ${orderId}
     ${ticketTextInfo}
     Booking Date: ${new Date().toLocaleDateString('en-IN')}
-    📍 Venue: Karthipuram, Neelambur, Coimbatore 
-    🕡 Time: 6:30 PM
     
-    Your booking is being processed, and you will receive your ticket details via email or WhatsApp once the seats are completely booked.
+    Your booking is being processed, and you will receive your ticket details via email/whatsapp anytime before the event.
     
     We look forward to hosting you for an unforgettable evening of music and entertainment.
-
-    If you have any questions, please contact our support team.
     
-    Best regards,
-    41Sounds Team
+    Best Regards,
+    Team 41Sounds
   `;
 
   try {
