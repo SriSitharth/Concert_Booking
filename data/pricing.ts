@@ -38,7 +38,7 @@ export const pricingData: IPricing[] = [
             "Digital concert program"
         ],
         mostPopular: false,
-        color: "dark-green"
+        color: "navi-blue"
     },
     {
         name: "VIP",
@@ -53,7 +53,7 @@ export const pricingData: IPricing[] = [
             "Close look with artists"
         ],
         mostPopular: true,
-        color: "navi-blue"
+        color: "dark-pink"
     },
     {
         name: "Special VIP",
@@ -69,6 +69,6 @@ export const pricingData: IPricing[] = [
             "Signed merchandise"
         ],
         mostPopular: false,
-        color: "dark-pink"
+        color: "deep-purple"
     }
 ];

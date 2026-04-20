@@ -15,9 +15,9 @@ export default function PricingSection() {
                     const colorClasses = {
                         'white': 'bg-white text-slate-900 border-slate-300',
                         'dark-yellow': 'bg-yellow-800 text-white border-yellow-800',
-                        'dark-green': 'bg-green-800 text-white border-green-800',
                         'navi-blue': 'bg-blue-950 text-white border-blue-800',
-                        'dark-pink': 'bg-pink-950 text-white border-pink-800'
+                        'dark-pink': 'bg-pink-950 text-white border-pink-800',
+                        'deep-purple': 'bg-purple-900 text-white border-purple-800',
                     };
                     const cardColor = colorClasses[plan.color as keyof typeof colorClasses] || 'bg-pink-950/30 text-white border-pink-950';
                     
