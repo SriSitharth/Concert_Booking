@@ -31,6 +31,8 @@ const ALLOWED_FORMS = [
   'https://payments.cashfree.com/forms/darkpink2000',
   'https://payments.cashfree.com/forms/naviblue1100',
   'https://payments.cashfree.com/forms/white600',
+  'https://payments.cashfree.com/forms/gold800',
+  'https://payments.cashfree.com/forms/specialvip',
 ];
 
 // Ticket category mapping
@@ -38,6 +40,8 @@ const TICKET_CATEGORIES = {
   'https://payments.cashfree.com/forms/darkpink2000': { category: 'VIP', price: 2052.5 },
   'https://payments.cashfree.com/forms/naviblue1100': { category: 'Premium', price: 1152.5 },
   'https://payments.cashfree.com/forms/white600': { category: 'General', price: 652.5 },
+  'https://payments.cashfree.com/forms/gold800': { category: 'Gold', price: 852.5 },
+  'https://payments.cashfree.com/forms/specialvip': { category: 'Special VIP', price: 5052.5 },
 };
 
 interface WhatsAppTemplateParam {
