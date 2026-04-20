@@ -124,7 +124,7 @@ async function sendEmail(
           
           <p>Please be informed that your payment has been successfully received and confirmed.</p>
 
-          <p>Thank you for booking your ${ticketCategory} tickets for our upcoming Mega Music & Magic Night! event on 16 May 2026 at Karthipuram, Neelambur, Coimbatore at 6:30 PM.</p>
+          <p>Thank you for booking your ${ticketCategory} tickets for our upcoming Muthamazhai 2.0 event on 16 May 2026 at Karthipuram, Neelambur, Coimbatore at 6:30 PM.</p>
           
           <div style="background-color: #f8f9fa; padding: 15px; border-left: 4px solid #007bff; margin: 20px 0;">
             <p><strong>Order ID:</strong> ${orderId}</p>
@@ -156,7 +156,7 @@ async function sendEmail(
     
     Please be informed that your payment has been successfully received and confirmed.
 
-    Thank you for booking your ${ticketCategory} tickets for our upcoming Mega Music & Magic Night! event on 16 May 2026 at Karthipuram, Neelambur, Coimbatore at 6:30 PM.
+    Thank you for booking your ${ticketCategory} tickets for our upcoming Muthamazhai 2.0 event on 16 May 2026 at Karthipuram, Neelambur, Coimbatore at 6:30 PM.
     
     Order ID: ${orderId}
     ${ticketTextInfo}

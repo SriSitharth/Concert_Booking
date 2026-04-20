@@ -9,9 +9,9 @@ export default function Page() {
     return (
         <div style={{ width: '100%' }}>
             <HeroSection />
+            <PricingSection />
             <FeaturesSection />
             <TestimonialSection />
-            <PricingSection />
             <ContactSection />
             <CTASection />
         </div>
