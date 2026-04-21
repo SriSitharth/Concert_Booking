@@ -16,7 +16,7 @@ export default function TestimonialSection() {
             >
                 <div className="aspect-square relative bg-white p-4 rounded-xl">
                     <img 
-                        src="/assets/seat.png" 
+                        src="/assets/seating.jpeg" 
                         alt="Seating Arrangement" 
                         className="w-full h-full object-contain"
                     />
