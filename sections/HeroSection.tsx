@@ -49,7 +49,7 @@ export default function HeroSection() {
                 viewport={{ once: true }}
                 transition={{ type: "spring", stiffness: 320, damping: 70, mass: 1 }}
             >
-                <a href="#pricing" className="bg-pink-600 hover:bg-pink-700 text-white rounded-full px-7 h-11 flex items-center justify-center">
+                <a href="/checkout" className="bg-pink-600 hover:bg-pink-700 text-white rounded-full px-7 h-11 flex items-center justify-center">
                     Book Tickets
                 </a>
             </motion.div>

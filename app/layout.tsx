@@ -1,6 +1,8 @@
+import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import LenisScroll from "@/components/LenisScroll";
+import { AuthProvider } from "@/lib/auth-context";
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -44,8 +46,10 @@ export default function RootLayout({ children, }: Readonly<{
                 <link rel="preload" href="/assets/background-splash.svg" as="image" />
             </head>
             <body style={{ width: '100%', minHeight: '100%' }}>
-                <LenisScroll />
-                {children}
+                <AuthProvider>
+                    <LenisScroll />
+                    {children}
+                </AuthProvider>
             </body>
         </html>
     );

@@ -6,6 +6,8 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { navlinks } from "@/data/navlinks";
 import { INavLink } from "@/types";
+import { NavbarAuthSection, NavbarMobileAuthSection } from "./NavbarAuthSection";
+
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -18,15 +20,12 @@ export default function Navbar() {
                 viewport={{ once: true }}
                 transition={{ type: "spring", stiffness: 250, damping: 70, mass: 1 }}
             >
-                {/* <a href="/" className="text-xl font-bold text-white hover:text-pink-500 transition">
-                    41sounds
-                </a> */}
-
+                {/* Logo */}
                 <a href="/" className="flex items-center">
                     <Image src="/assets/41logo.svg" alt="41 Sounds Logo" width={64} height={64} className="mr-2" priority />
                 </a>
 
-
+                {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center gap-8 transition duration-500">
                     {navlinks.map((link: INavLink) => (
                         <Link key={link.name} href={link.href} className="hover:text-pink-500 transition">
@@ -35,20 +34,32 @@ export default function Navbar() {
                     ))}
                 </div>
 
-                <a href="#pricing" className="hidden md:block px-6 py-2.5 bg-pink-600 hover:bg-pink-700 active:scale-95 transition-all rounded-full">
-                    Book Tickets
-                </a>
+                {/* Desktop Auth Section - Rendered by separate client component */}
+                <div className="flex items-center gap-4">
+                    <NavbarAuthSection />
+                </div>
+
+                {/* Mobile Menu Button */}
                 <button onClick={() => setIsOpen(true)} className="md:hidden">
                     <MenuIcon size={26} className="active:scale-90 transition" />
                 </button>
             </motion.nav>
 
+            {/* Mobile Navigation */}
             <div className={`fixed inset-0 z-100 bg-black/40 backdrop-blur flex flex-col items-center justify-center text-lg gap-8 md:hidden transition-transform duration-400 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
                 {navlinks.map((link: INavLink) => (
-                    <Link key={link.name} href={link.href} onNavigate={() => setIsOpen(false)}>
+                    <Link key={link.name} href={link.href} onClick={() => setIsOpen(false)}>
                         {link.name}
                     </Link>
                 ))}
+
+                {/* Mobile Auth Section - Rendered by separate client component */}
+                <NavbarMobileAuthSection onClose={() => setIsOpen(false)} />
+
+                <a href="/checkout" onClick={() => setIsOpen(false)} className="px-6 py-2.5 bg-pink-600 hover:bg-pink-700 active:scale-95 transition-all rounded-full">
+                    Book Tickets
+                </a>
+
                 <button onClick={() => setIsOpen(false)} className="active:ring-3 active:ring-white aspect-square size-10 p-1 items-center justify-center bg-pink-600 hover:bg-pink-700 transition text-white rounded-md flex">
                     <XIcon />
                 </button>

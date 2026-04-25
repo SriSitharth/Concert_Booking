@@ -29,7 +29,7 @@ export default function CTASection() {
                 </motion.p>
             </div>
             <motion.a 
-                href="#pricing"
+                href="/checkout"
                 className="px-12 py-3 text-slate-800 bg-white hover:bg-slate-200 rounded-full text-sm mt-4"
                 initial={{ y: 80, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
