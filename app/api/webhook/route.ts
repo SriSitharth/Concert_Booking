@@ -173,16 +173,21 @@ async function sendEmail(
   try {
     if (emailService === 'resend') {
       // Using Resend API (npm install resend)
-      const { Resend } = require('resend');
-      const resend = new Resend(process.env.RESEND_API_KEY);
-      
-      await resend.emails.send({
-        from: process.env.EMAIL_FROM || 'noreply@example.com',
-        to: customerEmail,
-        subject: subject,
-        html: htmlContent,
-        text: textContent,
-      });
+      try {
+        const { Resend } = require('resend');
+        const resend = new Resend(process.env.RESEND_API_KEY);
+        
+        await resend.emails.send({
+          from: process.env.EMAIL_FROM || 'noreply@example.com',
+          to: customerEmail,
+          subject: subject,
+          html: htmlContent,
+          text: textContent,
+        });
+      } catch (moduleError) {
+        console.warn('⚠️ Resend module not installed. Install with: npm install resend');
+        console.error('Email service error:', moduleError);
+      }
     } else if (emailService === 'smtp' || emailService === 'gmail') {
       // Using Nodemailer (npm install nodemailer)
       const nodemailer = require('nodemailer');
@@ -219,20 +224,25 @@ async function sendEmail(
         text: textContent,
       });
     } else if (emailService === 'mailgun') {
-      // Using Mailgun API
-      const mailgun = require('mailgun.js');
-      const mg = mailgun.client({
-        username: 'api',
-        key: process.env.MAILGUN_API_KEY,
-      });
+      // Using Mailgun API (npm install mailgun.js)
+      try {
+        const mailgun = require('mailgun.js');
+        const mg = mailgun.client({
+          username: 'api',
+          key: process.env.MAILGUN_API_KEY,
+        });
 
-      await mg.messages.create(process.env.MAILGUN_DOMAIN, {
-        from: process.env.EMAIL_FROM || `noreply@${process.env.MAILGUN_DOMAIN}`,
-        to: customerEmail,
-        subject: subject,
-        html: htmlContent,
-        text: textContent,
-      });
+        await mg.messages.create(process.env.MAILGUN_DOMAIN, {
+          from: process.env.EMAIL_FROM || `noreply@${process.env.MAILGUN_DOMAIN}`,
+          to: customerEmail,
+          subject: subject,
+          html: htmlContent,
+          text: textContent,
+        });
+      } catch (moduleError) {
+        console.warn('⚠️ Mailgun.js module not installed. Install with: npm install mailgun.js');
+        console.error('Email service error:', moduleError);
+      }
     } else {
       throw new Error(`Unknown email service: ${emailService}`);
     }
