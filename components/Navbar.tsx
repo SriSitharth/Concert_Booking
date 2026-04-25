@@ -56,7 +56,7 @@ export default function Navbar() {
                 {/* Mobile Auth Section - Rendered by separate client component */}
                 <NavbarMobileAuthSection onClose={() => setIsOpen(false)} />
 
-                <a href="/checkout" onClick={() => setIsOpen(false)} className="px-6 py-2.5 bg-pink-600 hover:bg-pink-700 active:scale-95 transition-all rounded-full">
+                <a href="/tickets" onClick={() => setIsOpen(false)} className="px-6 py-2.5 bg-pink-600 hover:bg-pink-700 active:scale-95 transition-all rounded-full">
                     Book Tickets
                 </a>
 

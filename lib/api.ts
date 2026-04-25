@@ -122,6 +122,38 @@ export const authApi = {
     }
     return data.data;
   },
+
+  forgotPassword: async (email: string) => {
+    const response = await fetch(`${API_BASE_URL}/api/users/forgot-password`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    const data = (await response.json()) as ApiResponse<{ token?: string }>;
+    if (!response.ok) {
+      throw new Error(data.message || 'Failed to process forgot password request');
+    }
+    return data;
+  },
+
+  resetPassword: async (resetToken: string, newPassword: string, confirmPassword: string) => {
+    const response = await fetch(`${API_BASE_URL}/api/users/reset-password`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ resetToken, newPassword, confirmPassword }),
+    });
+
+    const data = (await response.json()) as ApiResponse<{ message: string }>;
+    if (!response.ok) {
+      throw new Error(data.message || 'Failed to reset password');
+    }
+    return data;
+  },
 };
 
 // Payment API calls

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/lib/auth-context';
 import { AlertCircle, Eye, EyeOff } from 'lucide-react';
+import { motion } from 'motion/react';
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -96,13 +97,30 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md">
+    <div className="relative min-h-screen bg-black flex items-center justify-center px-4 py-12 overflow-hidden">
+      {/* Gradient blur background */}
+      <div className="absolute top-0 -z-10 left-1/3 w-96 h-96 bg-pink-600 blur-[300px] opacity-30"></div>
+      <div className="absolute bottom-0 -z-10 right-1/4 w-96 h-96 bg-pink-500 blur-[300px] opacity-20"></div>
+      
+      <motion.div 
+        className="w-full max-w-md"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         {/* Header */}
-        <div className="text-center mb-8">
+        <motion.div 
+          className="text-center mb-8"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          <Link href="/" className="inline-block mb-4 text-pink-600 hover:text-pink-500 text-sm transition-colors">
+            ← Back to Home
+          </Link>
           <h1 className="text-3xl font-bold text-white mb-2">Create Account</h1>
           <p className="text-gray-400">Join 41Sounds today</p>
-        </div>
+        </motion.div>
 
         {/* Error Message */}
         {error && (
@@ -113,7 +131,13 @@ export default function RegisterPage() {
         )}
 
         {/* Register Form */}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <motion.form 
+          onSubmit={handleSubmit} 
+          className="space-y-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+        >
           {/* Full Name Input */}
           <div>
             <label htmlFor="fullName" className="block text-sm font-medium text-white mb-2">
@@ -127,7 +151,7 @@ export default function RegisterPage() {
               value={formData.fullName}
               onChange={handleChange}
               disabled={isLoading}
-              className="w-full px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-white transition-colors disabled:opacity-50"
+              className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600/50 transition-all disabled:opacity-50 backdrop-blur-sm"
             />
           </div>
 
@@ -144,61 +168,7 @@ export default function RegisterPage() {
               value={formData.email}
               onChange={handleChange}
               disabled={isLoading}
-              className="w-full px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-white transition-colors disabled:opacity-50"
-            />
-          </div>
-
-          {/* Mobile Input */}
-          <div>
-            <label htmlFor="mobile" className="block text-sm font-medium text-white mb-2">
-              Mobile Number
-            </label>
-            <input
-              id="mobile"
-              name="mobile"
-              type="tel"
-              placeholder="+91 98765 43210"
-              value={formData.mobile}
-              onChange={handleChange}
-              disabled={isLoading}
-              className="w-full px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-white transition-colors disabled:opacity-50"
-            />
-          </div>
-
-          {/* Gender Select */}
-          <div>
-            <label htmlFor="gender" className="block text-sm font-medium text-white mb-2">
-              Gender
-            </label>
-            <select
-              id="gender"
-              name="gender"
-              value={formData.gender}
-              onChange={handleChange}
-              disabled={isLoading}
-              className="w-full px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg text-white focus:outline-none focus:border-white transition-colors disabled:opacity-50"
-            >
-              <option value="">Select Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Other">Other</option>
-              <option value="Prefer not to say">Prefer not to say</option>
-            </select>
-          </div>
-
-          {/* Date of Birth Input */}
-          <div>
-            <label htmlFor="dateOfBirth" className="block text-sm font-medium text-white mb-2">
-              Date of Birth
-            </label>
-            <input
-              id="dateOfBirth"
-              name="dateOfBirth"
-              type="date"
-              value={formData.dateOfBirth}
-              onChange={handleChange}
-              disabled={isLoading}
-              className="w-full px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg text-white focus:outline-none focus:border-white transition-colors disabled:opacity-50"
+              className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600/50 transition-all disabled:opacity-50 backdrop-blur-sm"
             />
           </div>
 
@@ -216,7 +186,7 @@ export default function RegisterPage() {
                 value={formData.password}
                 onChange={handleChange}
                 disabled={isLoading}
-                className="w-full px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-white transition-colors disabled:opacity-50"
+                className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600/50 transition-all disabled:opacity-50 backdrop-blur-sm"
               />
               <button
                 type="button"
@@ -243,7 +213,7 @@ export default function RegisterPage() {
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 disabled={isLoading}
-                className="w-full px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-white transition-colors disabled:opacity-50"
+                className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600/50 transition-all disabled:opacity-50 backdrop-blur-sm"
               />
               <button
                 type="button"
@@ -256,30 +226,89 @@ export default function RegisterPage() {
             </div>
           </div>
 
+          {/* Mobile Input */}
+          <div>
+            <label htmlFor="mobile" className="block text-sm font-medium text-white mb-2">
+              Mobile Number
+            </label>
+            <input
+              id="mobile"
+              name="mobile"
+              type="tel"
+              placeholder="+91 98765 43210"
+              value={formData.mobile}
+              onChange={handleChange}
+              disabled={isLoading}
+              className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600/50 transition-all disabled:opacity-50 backdrop-blur-sm"
+            />
+          </div>
+
+          {/* Gender Select */}
+          <div>
+            <label htmlFor="gender" className="block text-sm font-medium text-white mb-2">
+              Gender
+            </label>
+            <select
+              id="gender"
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+              disabled={isLoading}
+              className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600/50 transition-all disabled:opacity-50 backdrop-blur-sm"
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+              <option value="Prefer not to say">Prefer not to say</option>
+            </select>
+          </div>
+
+          {/* Date of Birth Input */}
+          <div>
+            <label htmlFor="dateOfBirth" className="block text-sm font-medium text-white mb-2">
+              Date of Birth
+            </label>
+            <input
+              id="dateOfBirth"
+              name="dateOfBirth"
+              type="date"
+              value={formData.dateOfBirth}
+              onChange={handleChange}
+              disabled={isLoading}
+              className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600/50 transition-all disabled:opacity-50 backdrop-blur-sm"
+            />
+          </div>
+
           {/* Submit Button */}
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full mt-6 px-4 py-3 bg-white text-black font-semibold rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full mt-6 px-4 py-3 bg-pink-600 hover:bg-pink-700 text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
           >
             {isLoading ? 'Creating Account...' : 'Create Account'}
           </button>
-        </form>
+        </motion.form>
 
         {/* Divider */}
         <div className="my-6 flex items-center gap-3">
           <div className="flex-1 h-px bg-gray-800"></div>
-          <p className="text-gray-600 text-sm">Already have an account?</p>
+          <p className="text-gray-300 text-sm">Already have an account?</p>
           <div className="flex-1 h-px bg-gray-800"></div>
         </div>
 
         {/* Login Link */}
-        <p className="text-center text-gray-400">
-          <Link href="/login" className="text-white hover:underline font-medium">
+        <motion.p 
+          className="text-center text-gray-400"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+        >
+          <Link href="/login" className="text-pink-600 hover:text-pink-500 font-semibold transition-colors">
             Sign in here
           </Link>
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
     </div>
   );
 }

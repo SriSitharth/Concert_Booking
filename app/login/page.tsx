@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/lib/auth-context';
-import { AlertCircle, Eye, EyeOff } from 'lucide-react';
+import { AlertCircle, Eye, EyeOff, ChevronRightIcon } from 'lucide-react';
+import { motion } from 'motion/react';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -59,13 +60,30 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md">
+    <div className="relative min-h-screen bg-black flex items-center justify-center px-4 py-12 overflow-hidden">
+      {/* Gradient blur background */}
+      <div className="absolute top-0 -z-10 left-1/3 w-96 h-96 bg-pink-600 blur-[300px] opacity-30"></div>
+      <div className="absolute bottom-0 -z-10 right-1/4 w-96 h-96 bg-pink-500 blur-[300px] opacity-20"></div>
+      
+      <motion.div 
+        className="w-full max-w-md"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         {/* Header */}
-        <div className="text-center mb-8">
+        <motion.div 
+          className="text-center mb-8"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          <Link href="/" className="inline-block mb-4 text-pink-600 hover:text-pink-500 text-sm transition-colors">
+            ← Back to Home
+          </Link>
           <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
           <p className="text-gray-400">Sign in to your 41Sounds account</p>
-        </div>
+        </motion.div>
 
         {/* Error Message */}
         {error && (
@@ -76,7 +94,13 @@ export default function LoginPage() {
         )}
 
         {/* Login Form */}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <motion.form 
+          onSubmit={handleSubmit} 
+          className="space-y-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+        >
           {/* Email Input */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
@@ -90,7 +114,7 @@ export default function LoginPage() {
               value={formData.email}
               onChange={handleChange}
               disabled={isLoading}
-              className="w-full px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-white transition-colors disabled:opacity-50"
+              className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600/50 transition-all disabled:opacity-50 backdrop-blur-sm"
             />
           </div>
 
@@ -116,7 +140,7 @@ export default function LoginPage() {
                 value={formData.password}
                 onChange={handleChange}
                 disabled={isLoading}
-                className="w-full px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-white transition-colors disabled:opacity-50"
+                className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600/50 transition-all disabled:opacity-50 backdrop-blur-sm"
               />
               <button
                 type="button"
@@ -133,26 +157,31 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full mt-6 px-4 py-3 bg-white text-black font-semibold rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full mt-6 px-4 py-3 bg-pink-600 hover:bg-pink-700 text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 transition-transform"
           >
             {isLoading ? 'Signing in...' : 'Sign In'}
           </button>
-        </form>
+        </motion.form>
 
         {/* Divider */}
         <div className="my-6 flex items-center gap-3">
           <div className="flex-1 h-px bg-gray-800"></div>
-          <p className="text-gray-600 text-sm">Don't have an account?</p>
+          <p className="text-gray-300 text-sm">Don't have an account?</p>
           <div className="flex-1 h-px bg-gray-800"></div>
         </div>
 
         {/* Register Link */}
-        <p className="text-center text-gray-400">
-          <Link href="/register" className="text-white hover:underline font-medium">
+        <motion.p 
+          className="text-center text-gray-400"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+        >
+          <Link href="/register" className="text-pink-600 hover:text-pink-500 font-semibold transition-colors">
             Create one here
           </Link>
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
     </div>
   );
 }
