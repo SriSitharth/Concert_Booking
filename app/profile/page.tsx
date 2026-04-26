@@ -3,11 +3,13 @@
 import { useAuth } from '@/lib/auth-context';
 import { authApi } from '@/lib/api';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { AlertCircle, ArrowLeft } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export default function ProfilePage() {
+  const router = useRouter();
   const { user, token, isLoading, updateProfile, logout } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
@@ -240,7 +242,10 @@ export default function ProfilePage() {
 
         {/* Logout Button */}
         <motion.button
-          onClick={logout}
+          onClick={async () => {
+            await logout();
+            router.push('/');
+          }}
           className="w-full px-4 py-3 bg-pink-600 hover:bg-pink-700 text-white font-semibold rounded-lg transition-colors active:scale-95"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
