@@ -48,7 +48,6 @@ export const pricingData: IPricing[] = [
             "Front row seating",
             "Exclusive VIP lounge access",
             "Food court access",
-            "Meet & greet opportunity",
             "Priority parking",
             "Close look with artists"
         ],
@@ -63,7 +62,6 @@ export const pricingData: IPricing[] = [
             "Front row seating",
             "Exclusive VIP lounge access",
             "Food court access",
-            "Meet & greet opportunity",
             "Priority parking",
             "Close look with artists",
             "Signed merchandise"
